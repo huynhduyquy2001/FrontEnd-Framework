@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Đồng hồ thời gian</title>
+	<style>
+		#time {
+			background: red;
+			padding: 30px;
+			color: #fff;
+			font-size: 80px;
+			font-weight: bold;
+			text-align: center;
+			width: 500px;
+			margin: 30px auto;
+			border-radius: 15px;
+			font-family: Verdana;
+		}
+	</style>
+</head>
+
+<body>
+	<div id="time"></div>
+	<script>
+		 
+		
+		
+			for (var i=45; i >= 0; i--) {
+				
+
+				
+				
+				for (var y=60; y >= 0; y--) {
+					alert(i+":"+y);
+
+				
+					setTimeout(function(){
+					document.getElementById("time").innerHTML = i + ":" + y;
+				},1000);
+				
+				}
+				
+				
+			}
+
+			
+
+
+		
+
+	</script>
+</body>
+
+</html>

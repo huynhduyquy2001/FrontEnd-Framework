@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+
+</head>
+
+<body ng-app="myApp">
+
+
+  <div class="row" style="margin: 0; margin-top: 30px;" ng-controller="myCtrl1">
+    <aside class="col-md-3">
+
+      <div class="panel-group" id="accordion">
+
+        <div class="panel panel-default hoiDap" style=" border-radius: 5px;">
+          <div class="panel-heading" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+            <span class="glyphicon glyphicon-th-list"></span> Các môn lập trình <span class="badge pull-right">9</span>
+          </div>
+
+          <ul class="list-group panel-collapse collapse" id="collapseOne">
+            <li class="list-group-item" ng-repeat="lt in lapTrinh"><a href="#10/{{lt.Id}}/{{lt.Name}}">{{lt.Name}}</a>
+            </li>
+          </ul>
+
+        </div>
+
+
+
+        <div class="panel panel-default hoiDap" style="margin-top: 15px; border-radius: 5px;">
+          <div class="panel-heading" class="panel-heading" data-toggle="collapse" data-parent="#accordion"
+            href="#collapseTwo">
+            <span class="glyphicon glyphicon-star-empty"></span> Các môn về giao diện <span class="badge pull-right">4</span>
+          </div>
+          <ul class="list-group panel-collapse collapse " id="collapseTwo">
+            <li class="list-group-item" ng-repeat="gd in giaoDien"><a href="#10/{{gd.Id}}/{{gd.Name}}">{{gd.Name}}</a>
+            </li>
+
+          </ul>
+
+        </div>
+        <div class="panel panel-default hoiDap" style="margin-top: 15px; border-radius: 5px;">
+          <div class="panel-heading" class="panel-heading" data-toggle="collapse" data-parent="#accordion"
+            href="#collapseThree">
+            <span class="glyphicon glyphicon-star-empty"></span> Các môn về web <span class="badge pull-right">4</span>
+          </div>
+          <ul class="list-group panel-collapse collapse in " id="collapseThree">
+            <li class="list-group-item" ng-repeat="ws in webSite"><a href="#10/{{ws.Id}}/{{ws.Name}}">{{ws.Name}}</a>
+            </li>
+
+          </ul>
+
+        </div>
+      </div>
+    </aside>
+
+
+
+    <div class="col-md-9" style="position: relative;" ng-controller="myCtrl2">
+      <div class="row">
+
+        <!-- <div class="col-md-4 animationTop delay-01" ng-repeat="ds in danhSach|orderBy:'Name'">
+          <a href="#10/{{ds.Id}}/{{ds.Name}}">
+            <div class="panel text-center khungDeThi">
+
+              <div class="panel-body">
+                <img src="Images/{{ds.Logo}}" alt="">
+              </div>
+              <div class="panel-footer" style="background-color: transparent;">
+                {{ds.Name}}
+              </div>
+            </div>
+          </a>
+        </div> -->
+      </div>
+      <div class="row">
+        <div class="panel hoiDap">
+          <div class="panel-heading text-center">
+              <h3>DANH SÁCH MÔN HỌC</h3>
+                  
+             
+          </div>
+          <div class="panel-body ">
+            <div class="col-md-4 animationTop delay-01" ng-repeat="ds in danhSach|orderBy:prod|limitTo:6:begin">
+              <a href="#10/{{ds.Id}}/{{ds.Name}}">
+                <div class="panel text-center khungDeThi">
+    
+                  <div class="panel-body">
+                    <img src="Images/{{ds.Logo}}" alt="">
+                  </div>
+                  <div class="panel-footer" style="background-color: transparent;">
+                    {{ds.Name}}
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+          <center>
+              <div class="panel-footer text-center">
+                  <ul >
+                      <ul class="pager">
+                          <li><a href="" ng-click="first()">
+                              <span class="glyphicon glyphicon-hand-up"></span>
+                          </a></li>
+                          <li><a href="" ng-click="pre()">
+                              <span class="glyphicon glyphicon-hand-left"></span>
+                          </a></li>
+                          <li><a href="" ng-click="next()">
+                              <span class="glyphicon glyphicon-hand-right"></span>
+                          </a></li>
+                          <li><a href="" ng-click="last()">
+                              <span class="glyphicon glyphicon-hand-down"></span>
+                          </a></li>
+                      </ul>
+                      
+               
+              </div>
+          </center>
+          </div>
+      </div>
+
+
+    </div>
+
+  </div>
+
+
+</body>
+
+
+</html>

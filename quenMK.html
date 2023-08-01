@@ -1,0 +1,78 @@
+<div id="toast"></div>
+<div class="row">
+    <div class="col-md-6">
+        <div class="animationTop delay-02"
+            style="font-size: 30px; margin: 20px; padding-left: 100px; font-weight: bold; font-family: Arial, Helvetica, sans-serif;">
+            <span style="color: #368E9D;">Thi trắc nghiệm</span> <span style="color: #DF3F75;"> ONLINE</span>
+
+        </div>
+        <div style="padding-left: 100px;">
+            <ul class="animationTop delay-04">
+                <li>Rèn luyện kiến thức, kỹ năng</li>
+                <li>Đa dạng các chuyên ngành</li>
+                <li>Phù hợp các đối tượng người dùng khác nhau</li>
+                <hr>
+                <a href="#6">
+                    <button type="button" class="btn btn-primary animationTop delay-04"
+                        style="background-color: #368E9D; color: white; border: none;  height: 35px; border-radius: 20px; font-size: 14px; margin-right: 10px;">
+                        ĐĂNG NHẬP</button>
+                </a>
+                <a href="#7">
+                    <button type="button" class="btn btn-primary animationTop delay-05"
+                        style="background-color: #DF3F75; color: white; border: none; width: auto; border-radius:  30px ; font-size: 14px; margin-right: 10px;">ĐĂNG
+                        KÍ</button>
+                </a>
+
+
+
+
+            </ul>
+        </div>
+    </div>
+    <div class="col-md-6 animationTop delay-06" ng-controller="quenMK">
+        <div class="panel zoom"
+            style="margin-right: 30px; width: 395px; border-radius: 30px ; background-color: #368E9D; color: white;  padding: 20px; ">
+            <div
+                style="font-size: 30px; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; text-align: center; font-weight: bold;">
+                Quên mật khẩu</div>
+            
+            <form name="frmQuenMK">
+                <div>
+                    <label for="">Tên tài khoản</label>
+                    <input class="form-control" type="text" name="txtname" ng-model="nameDK" required
+                        style="height: 30px; width: 350px; ">
+
+                    <div ng-hide="frmQuenMK.txtname.$valid" class="form-text text-danger">Vui lòng nhập tên</div>
+                </div>
+                <div>
+                    <label for="">Email đăng kí</label>
+
+                    <input class="form-control" ng-model="emailDK" type="email" name="txtemail" required
+                            style="height: 30px; width: 350px; ">
+                    <div ng-hide="frmQuenMK.txtemail.$valid" class="form-text text-danger">Email k hợp lệ</div>
+                </div>
+               
+                <center>
+
+                    <div style="margin-top: 10px;">
+                        <button ng-click="layMK()"  ng-disabled="frmQuenMK.$invalid" class="btn btn-primary"
+                            style="background-image: linear-gradient(90deg, #368E9D, #DF3F75); color: white; border: none; width: 170px; height: 35px; border-radius: 20px; font-size: 14px; margin-right: 10px;">
+                            GỬI MẬT KHẨU</button>
+                    </div>
+                </center>
+            </form>
+            <div>
+                <label for="">Mật khẩu của bạn là:</label>
+
+                <input class="form-control" ng-model="mkDK"  required disabled
+                        style="height: 30px; width: 350px; ">
+                
+            </div>
+        </div>
+        <div class="container" style="width: 400px; margin-top: 10px;">
+
+
+
+
+        </div>
+    </div>

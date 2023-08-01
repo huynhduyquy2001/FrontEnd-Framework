@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Thi trắc nghiệm Onl</title>
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/angular.min.js"></script>
+    <script src="js/angular-route.js"></script>
+
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="js/event.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://kit.fontawesome.com/f737751420.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link rel="stylesheet" href="css/aos-master/aos-master/dist/aos.css">
+    <script src="css/aos-master/aos-master/dist/aos.js"></script>
+    <style>
+        .menu {
+            position: fixed;
+            left: 0;
+            top: 0;
+            z-index: 99;
+        }
+
+        .scroll {
+            top: -100px
+        }
+
+        .no-scroll {
+            top: 0;
+            z-index: 9999
+        }
+
+        @media screen and (max-width:500px) {
+            .menu {
+                position: relative !important;
+                z-index: initial;
+            }
+        }
+    </style>
+
+</head>
+
+<body ng-app="myApp">
+    <div id="toast"></div>
+    <div class="water animationTop3 delay-01">
+        <img src="Images/bg.png" alt="">
+    </div>
+
+    <div class="water2 animationTop delay-01">
+    </div>
+
+    <div class="glasses animationTop4 delay-01">
+        <img src="Images/cafe.png" alt="">
+    </div>
+
+    <header class="row menu nav-down" style="margin: 0; padding: 0;" ng-include="'header.html'">
+
+    </header>
+    <div style="height: 100px;"></div>
+    <hr>
+    <div ng-view>
+
+    </div>
+    <hr>
+    <footer class="col-md-12 text-center " style="margin-bottom: 30px;" ng-include="'footer.html'">
+        
+    </footer>
+</body>
+<script>
+    AOS.init();
+</script>
+<script src='//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js'></script>
+<script type='text/javascript'>
+    //<![CDATA[    
+    $(function () {
+        var o = $(document).scrollTop(), n = $(".menu").outerHeight();
+        $(window).scroll(function () {
+            var s = $(document).scrollTop();
+            $(document).scrollTop() >= 50 ? $(".menu").css("position", "fixed") : $(".menu").css("position", "fixed"), s > n ? $(".menu").addClass("scroll").addClass("sticky") : $(".menu").removeClass("scroll"), s > o ? $(".menu").removeClass("no-scroll").removeClass("sticky") : $(".menu").addClass("no-scroll"), o = $(document).scrollTop()
+        })
+    });
+//]]>
+</script>
+
+<script language="javascript">
+    $(document).ready(function () {
+        $(window).scroll(function () {
+            if ($(this).scrollTop()) {
+                $('.menu').addClass('sticky');
+            } else {
+                $('.menu').removeClass('sticky');
+            }
+        });
+    });
+</script>
+
+<script>
+    var app = angular.module("myApp", ["ngRoute"]);
+    // Khởi tạo
+    app.run(function ($rootScope, $http) {
+        $rootScope.indexStudent = -1;
+        $rootScope.subjects = [];
+        $rootScope.students = [];
+        // $http.get("db/Students.js").then(function (response) {
+        //     $rootScope.students = response.data;
+        //     localStorage.setItem('students', JSON.stringify($rootScope.students));
+        // });
+
+        // $http.get("db/Subjects.js").then(function (response) {
+        //     $rootScope.subjects = response.data;
+        //     localStorage.setItem('subjects', JSON.stringify($rootScope.subjects));
+        // });
+
+        //lấy thông tin người dùng từ localStorage
+        var students = localStorage.getItem('students');
+        $rootScope.students = JSON.parse(students);
+        //lấy thông tin môn học từ localStorage
+        var subjects = localStorage.getItem('subjects');
+        $rootScope.subjects = JSON.parse(subjects);
+    });
+</script>
+<script src="js/myJs/main.js"></script>
+<script src="js/myJs/dangNhap.js"></script>
+<script src="js/myJs/dangKi.js"></script>
+<script src="js/myJs/dangXuat.js"></script>
+<script src="js/myJs/quenMK.js"></script>
+<script src="js/myJs/capNhatTK.js"></script>
+<script src="js/myJs/danhMuc.js"></script>
+<script src="js/myJs/trangThi.js"></script>
+<script src="db/Subjects2.js"></script>
+
+</html>

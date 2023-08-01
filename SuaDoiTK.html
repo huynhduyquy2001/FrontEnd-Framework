@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+
+</head>
+
+<body>
+
+    <div class="container" style="background-color: white;border-radius: 10px;">
+        <div class="row" ng-controller="capNhapHoSo"
+            style="line-height: 35px; padding-top: 30px; padding-right: 30px; padding-bottom: 10px; ">
+            <div class="col-md-3 animationTop delay-03">
+                <h4>Chào mừng <span style="font-weight: bold;">{{student.fullname}}</span> </h4>
+                <h5>Thành viên từ: 08/01/2023</h5>
+                <div role="tabpanel">
+                    <!-- Nav tabs -->
+                    <ul class="nav nav-stacked" role="tablist">
+                        <li role="presentation" class="active" ng-click="suaDoiTk()">
+                            <a href="#home" aria-controls="home" role="tab" data-toggle="tab">
+                                <i class="fa-solid fa-file-pen"></i> Thông tin tài khoản</a>
+                        </li>
+                        <li role="presentation">
+                            <a href="#tab" aria-controls="tab" role="tab" data-toggle="tab">
+                                <i class="fa-solid fa-user-pen"></i> Đổi mật khẩu</a>
+                        </li>
+
+                        <li>
+                            <a href="" ng-click="dangXuat()">
+                                <i class="fa-solid fa-right-from-bracket"></i> Đăng xuất</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-9 animationTop delay-04">
+                <!-- Tab panes -->
+                <div class="tab-content ">
+                    <div role="tabpanel" class="tab-pane active animationTop delay-01" id="home"
+                        ng-controller="capNhatTK">
+                        <h3>
+                            &nbsp CHỈNH SỬA THÔNG TIN CÁ NHÂN
+                        </h3>
+                        <div class="row">
+                            <form name="frmTK">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        Họ Tên
+                                    <input type="text" class="form-control" name="fullname" id=""
+                                        ng-model="student.fullname" required>
+                                    <small ng-show="frmTK.fullname.$error.required" id="fullname"
+                                        class="form-text text-danger" style="color: red;">Vui lòng nhập họ tên</small>
+                                    </div>
+                                    <div class="form-group">
+                                        Tên tài khoản
+                                    <input type="text" class="form-control" disabled name="" id=""
+                                        ng-model="student.username">
+                                    Email
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <input class="form-control" type="text" name="email" ng-model="student.email" required>
+                                    <small ng-show="frmTK.email.$error.required" class="form-text text-danger" style="color: red;">Vui
+                                        lòng nhập email</small>
+                                    <small ng-show="frmTK.email.$error.email" class="form-text text-danger" style="color: red;">Không
+                                        đúng định dạng email</small>
+                                    </div>
+                                    
+                                   
+                                    <div class="form-group">
+                                        Học phí
+                                        <input class="form-control" type="text" name="schoolfee" ng-model="student.schoolfee" required>
+                                    <small ng-show="frmTK.schoolfee.$error.required" id="schoolfee" class="form-text text-danger" style="color: red;">Vui lòng nhập học phí</small>
+
+                                    </div>
+                                    
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        Giới Tính
+                                    <select name="" id="input" class="form-control" ng-model="student.gender"
+                                        required="required">
+                                        <option value="true">Nam</option>
+                                        <option value="false">Nữ</option>
+                                    </select>
+                                    </div>
+                                    <div class="form-group" >
+                                        Điểm
+                                        <input class="form-control" disabled type="text" name="" ng-model="student.marks">
+                                        
+                                    </div>
+                                    <div class="form-group">
+                                        Ngày sinh(yyyy-mm-dd)
+                                        <input class="form-control" type="text" name="birthday" ng-model="student.birthday"  required pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}">
+                                        <small ng-show="frmTK.birthday.$error.required" class="form-text text-danger" style="color: red;">Vui lòng nhập ngày sinh</small>
+                                        <small ng-show="frmTK.birthday.$error.pattern" class="form-text text-danger" style="color: red;">Không đúng định dạng ngày sinh</small>
+                                        
+                                   
+                                        
+                                    </div>
+                                    
+                                    
+                                   
+                                </div>
+                        </div>
+                        <div style="margin-top: 30px; text-align: center;">
+                            <button ng-click="capNhatTK()" class="btn btn-primary" ng-disabled="frmTK.$invalid"
+                                style="background-image: linear-gradient(90deg, #368E9D, #DF3F75); color: white; border: none; width: 170px; height: 35px; border-radius: 20px; font-size: 14px; margin-right: 10px;">
+                                CẬP NHẬT</button>
+
+                        </div>
+                        </form>
+                    </div>
+                    <div role="tabpanel" class="tab-pane animationTop delay-01" id="tab" ng-controller="doiMK">
+                        <h3>Đổi mật khẩu</h3>
+                        <form name="frmDoiMK">
+                            Tên tài khoản
+                            <input class="form-control" type="text" name="" ng-model="name" disabled>
+                            <div>
+                                Mật khẩu cũ
+                                <input class="form-control" type="password" name="password" ng-model="oldPass" required>
+                                <small ng-show="frmDoiMK.password.$error.required" class="form-text text-danger"
+                                    style="color: red;">Vui lòng nhập mật khẩu</small>
+
+                            </div>
+                            <div>
+                                Mật khẩu mới
+                                <input class="form-control" type="password" name="newPass1" ng-model="newPass1"
+                                    required>
+                                <small ng-show="frmDoiMK.newPass1.$error.required" class="form-text text-danger"
+                                    style="color: red;">Vui lòng nhập mật khẩu mới</small>
+
+                            </div>
+                            <div>
+                                Nhập lại mật khẩu mới
+                                <input class="form-control" type="password" name="newPass2" ng-model="newPass2"
+                                    required>
+                                <small ng-show="frmDoiMK.newPass2.$error.required" class="form-text text-danger"
+                                    style="color: red;">Vui lòng nhập mật khẩu xác nhận</small>
+
+                            </div>
+
+
+                            <div style="margin-top: 30px; text-align: center;">
+                                <button ng-click="doiMatKhau()" class="btn btn-primary" ng-disabled="frmDoiMK.$invalid"
+                                    style="background-image: linear-gradient(90deg, #368E9D, #DF3F75);  color: white; border: none; width: 170px; height: 35px; border-radius: 20px; font-size: 14px; margin-right: 10px;">
+                                    ĐỔI MẬT KHẨU</button>
+
+                            </div>
+                        </form>
+
+                    </div>
+
+
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</body>
+
+</html>

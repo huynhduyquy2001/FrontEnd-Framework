@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+
+
+</head>
+
+<body>
+
+
+  <div class="dropdown-divider" href="#"></div>
+  <div class="row" >
+    <aside class="col-md-3 animationTop delay-04" ng-controller="myCtrl1">
+
+      <div class="panel-group" id="accordion">
+
+        <div class="panel panel-default hoiDap" style=" border-radius: 5px;">
+          <div class="panel-heading" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+            <span class="glyphicon glyphicon-th-list"></span> Các môn lập trình
+          </div>
+
+          <ul class="list-group panel-collapse collapse" id="collapseOne">
+            <li class="list-group-item" ng-repeat="lt in lapTrinh"><a href="#10/{{lt.Id}}/{{lt.Name}}">{{lt.Name}}</a>
+            </li>
+          </ul>
+
+        </div>
+
+
+
+        <div class="panel panel-default hoiDap" style="margin-top: 15px; border-radius: 5px;">
+          <div class="panel-heading" class="panel-heading" data-toggle="collapse" data-parent="#accordion"
+            href="#collapseTwo">
+            <span class="glyphicon glyphicon-star-empty"></span> Các môn về giao diện
+          </div>
+          <ul class="list-group panel-collapse collapse " id="collapseTwo">
+            <li class="list-group-item" ng-repeat="gd in giaoDien"><a href="#10/{{gd.Id}}/{{gd.Name}}">{{gd.Name}}</a>
+            </li>
+
+          </ul>
+
+        </div>
+        <div class="panel panel-default hoiDap" style="margin-top: 15px; border-radius: 5px;">
+          <div class="panel-heading" class="panel-heading" data-toggle="collapse" data-parent="#accordion"
+            href="#collapseThree">
+            <span class="glyphicon glyphicon-star-empty"></span> Các môn về web
+          </div>
+          <ul class="list-group panel-collapse collapse in " id="collapseThree">
+            <li class="list-group-item" ng-repeat="ws in webSite"><a href="#10/{{ws.Id}}/{{ws.Name}}">{{ws.Name}}</a>
+            </li>
+
+          </ul>
+
+        </div>
+      </div>
+    </aside>
+
+    <div class="col-md-9 gioiThieu animationTop delay-05">
+      <div style="background-color: white; margin-right: 10px; padding: 15px; border-radius: 10px; min-height: 300px;">
+        <div style="font-size: 20px; font-weight: bold;">Giới thiệu website tạo trắc nghiệm online để học sinh ôn tập ở
+          nhà: Giao diện đẹp, dễ sử dụng</div>
+        <h5>Website thi trắc nghiệm onine được tạo ra nhằm hướng đến đối tượng người dùng thuộc tầng lớp học sinh, sinh
+          viên các cấp có nhu cầu nâng cao kiến thức, trình độ và tư duy bằng các bài tập trắc nghiệm</h5>
+        <h3 style=" font-weight: bold;">Hệ thống thi trắc nghiệm online mang lại những lợi ích gì?</h3>
+        <h5>Việc kiểm tra kiến thức thường xuyên thông qua các bài test, hệ thống thi là một điều cần thiết. Tuy nhiên
+          không phải lúc nào bạn cũng có đủ thời gian và điều kiện để đến trung tâm, trường học thực hiện bài thi này.
+          Đó cũng chính là lý do hệ thống thi trắc nghiệm online được ra đời. Với mục tiêu giúp người dùng tiết kiệm
+          thời gian, chi phí mà vẫn đảm bảo được hiệu năng công việc, phần mềm này là một trong những phần mềm được yêu
+          thích và sử dụng rộng rãi nhất hiện nay.</h5>
+        <h3 style=" font-weight: bold;">Hệ thống thi trắc nghiệm online gồm những lĩnh vực nào?</h3>
+        <h5>Chúng tôi cung cấp các chuyên ngành liên quan đến Công nghệ thông tin và những lĩnh vực khác, được mở rộng
+          liên tục mỗi ngày nhằm hướng đến những đối tượng ngày một đa dạng.
+        </h5>
+        <div class="row">
+          <div class="col-md-4">
+            <div class="panel text-center" style="border-radius: 10px;">
+
+              <div class="panel-body">
+                <img src="Images/ADAV.png" alt="">
+              </div>
+              <div class="panel-footer">
+                Lập trình Android căn bản
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="panel text-center" style="border-radius: 10px; ">
+
+              <div class="panel-body">
+                <img src="Images/web.jpg" alt="">
+              </div>
+              <div class="panel-footer">
+                Xây dựng trang Web
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="panel text-center" style="border-radius: 10px;">
+
+              <div class="panel-body">
+                <img src="Images/sql.jpg" style=" border-radius: 10px;" alt="">
+              </div>
+              <div class="panel-footer">
+                Cơ sở dữ liệu
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+<script language="javascript">
+  $(document).ready(function () {
+    $(window).scroll(function () {
+      if ($(this).scrollTop()) {
+        $('header').addClass('sticky');
+      } else {
+        $('header').removeClass('sticky');
+      }
+    });
+  });
+</script>
+
+</html>

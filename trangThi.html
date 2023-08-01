@@ -1,0 +1,81 @@
+<div ng-controller="trangThi">
+    <div class="row" ng-show="!bigCheck">
+        <div style="padding: 30px;">
+            <center>
+
+                <div>
+                    <button class="btn btn-info animationTop delay-01" ng-hide="check" ng-click="start()">Bắt đầu kiểm tra</button>
+                </div>
+                <div class="row" ng-hide="!check">
+                    <div class="phut_giay">
+                        <div>
+                            <img src="Images/clock.gif" alt="">
+                        </div>
+                       
+                        <span id="m">{{m}}</span>: <span id="s">{{s}}</span>
+                        <h1 id="kq" ng-show="!check2"></h1>
+
+                    </div>
+
+
+                </div>
+            </center>
+            <center>
+                <div ng-hide="!check">
+                   <h3>{{monHoc}}</h3> 
+                </div>
+            </center>
+            <div class="panel panel-default hoiDap animationTop" ng-hide="!check">
+                <div class="panel-heading">
+                    <strong>{{cauHoi.Text}}</strong> <span class="pull-right">Câu:{{stt+1}}/{{dsCauHoi.length}}</span>
+                    <br>
+                    Điểm: <span>{{cauHoi.Marks}}</span>
+                </div>
+                <div class="panel-body" style="min-height: 180px;">
+                    <ul>
+                        <li ng-repeat="ch in cauHoi.Answers"> 
+                            <label style="font-weight: 100;"><input type="radio" value="{{ch.Id}}" name="cauTL">{{ch.Text}}</label>
+                        </li>
+                    </ul>
+                </div>
+                 <div class="panel-footer">
+                    <span>
+                        <button class="btn btn-success" ng-hide="check3" ng-click="xemKQ()">Trả lời câu hỏi</button>
+                        <button class="btn btn-warning" ng-click="ketThuc()">Kết thúc sớm</button>
+                        <span class="pull-right">Mark:{{mark}}</span>
+                        <button class="btn btn-danger" ng-click="start2()">Làm lại</button>
+                        <button class="btn btn-info" ng-hide="!check3" ng-click="xemDA()">Xem đáp án</button>
+                    </span>
+
+                </div>
+                
+            </div>
+            <div ng-hide="!check4">
+                <div class="panel panel-default hoiDap animationTop"  ng-repeat="ds in dsCauHoi">
+                    <div class="panel-heading">
+                        <strong>{{ds.Text}}</strong> 
+                        <span class="pull-right" >
+
+                            Số câu:{{$index+1}}/{{dsCauHoi.length}}</span>
+                        <br>
+                        Điểm: <span>{{ds.Marks}}</span>
+                    </div>
+                    <div class="panel-body" style="min-height: 180px;">
+                        <ul>
+                            <li ng-repeat="ch in ds.Answers"> 
+                                <label style="font-weight: 100;"><input type="radio" value="{{ch.Text}}" id="{{ch.Id}}" disabled> {{ch.Text}}</label>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="panel-footer" ng-repeat="da in dapAn">
+                        
+                    </div>
+                    
+                </div>
+            </div>
+           
+           
+        </div>
+
+    </div>
+</div>

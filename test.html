@@ -1,0 +1,289 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Thi trắc nghiệm Onl</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="https://kit.fontawesome.com/f737751420.js"></script>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link rel="stylesheet" href="css/aos-master/aos-master/dist/aos.css">
+    <script src="css/aos-master/aos-master/dist/aos.js"></script>
+    <script src="js/angular.min.js"></script>
+    <script src="js/angular-route.js"></script>
+   <style>
+        .menu {
+            position: fixed;
+            left: 0;
+            top: 0;
+            z-index: 99;
+        }
+
+        .scroll {
+            top: -100px
+        }
+
+        .no-scroll {
+            top: 0;
+            z-index: 9999
+        }
+
+        @media screen and (max-width:500px) {
+            .menu {
+                position: relative !important;
+                z-index: initial;
+            }
+        }
+    </style>
+
+</head>
+
+
+<body ng-app="myApp">
+    <form name="frmRegister">
+        <div class="md-form md-outline">
+            <i class="fas fa-user prefix indigo-text"></i><label class="bg-white indigo-text rounded px-2 ml-5" for="username"><strong>Tên đăng ký (tài khoản)</strong></label>
+            <input name="username" ng-model="studentR.username" type="text" id="username" class="form-control border-indigo" required minlength="5">
+            
+            <small ng-show="frmRegister.username.$error.required" class="form-text text-danger">Vui lòng nhập tên tài khoản</small>
+            <small ng-show="frmRegister.username.$error.minlength" class="form-text text-danger">Tên tài khoản phải hơn 5 kí tự</small>
+        </div>
+
+        <div class="md-form md-outline">
+            <i class="fas fa-lock prefix indigo-text"></i> <label class="bg-white indigo-text rounded px-2 ml-5" for="password"><strong>Mật khẩu</strong></label>
+            <input minlength="5" name="password" ng-model="studentR.password" type="password" id="password" class="form-control border-indigo" required>
+            
+            <small ng-show="frmRegister.password.$error.required" id="password" class="form-text text-danger">Vui lòng nhập mật khẩu</small>
+            <small ng-show="frmRegister.password.$error.minlength" id="password" class="form-text text-danger">Mật khẩu phải hơn 5 kí tự</small>
+        </div>
+
+        <div class="md-form md-outline">
+            <i class="fas fa-lock prefix indigo-text"></i> <label class="bg-white indigo-text rounded px-2 ml-5" for="repassword"><strong>Mật khẩu (nhập lại)</strong> </label>
+            <input name="repassword" ng-model="repassword" type="password" id="repassword" class="form-control border-indigo" required re-pass>
+            
+            <small ng-show="frmRegister.repassword.$error.required" class="form-text text-danger">Vui lòng nhập lại mật khẩu</small>
+            <small ng-show="frmRegister.repassword.$invalid && !frmRegister.repassword.$error.required" class="form-text text-danger">Mật khẩu nhập lại không khớp</small>
+        </div>
+
+        <div class="md-form md-outline">
+            <i class="fas fa-signature prefix indigo-text"></i> <label class="bg-white indigo-text rounded px-2 ml-5" for="fullname"><strong>Họ và tên</strong> </label>
+            <input name="fullname" ng-model="studentR.fullname" type="text" id="fullname" class="form-control border-indigo" required minlength="5">
+            
+            <small ng-show="frmRegister.fullname.$error.required" id="fullname" class="form-text text-danger">Vui lòng nhập họ tên</small>
+            <small ng-show="frmRegister.fullname.$error.minlength" id="fullname" class="form-text text-danger">Không được dưới 5 kí tự</small>
+
+        </div>
+
+        <div class="md-form md-outline">
+            <i class="far fa-envelope prefix indigo-text"></i> <label class="bg-white indigo-text rounded px-2 ml-5" for="email"><strong>Email</strong> </label>
+            <input name="email" ng-model="studentR.email" type="email" id="email" class="form-control border-indigo" required>
+            
+            <small ng-show="frmRegister.email.$error.required" class="form-text text-danger">Vui lòng nhập email</small>
+            <small ng-show="frmRegister.email.$error.email" class="form-text text-danger">Không đúng định dạng email</small>
+        </div>
+
+        <label class="bg-white indigo-text rounded px-2" for=""> <i class="fas fa-transgender"></i>Giới tính:</label>
+        <span>
+            <div class="form-check form-check-inline">
+                <input ng-model="studentR.gender" type="radio" class="form-check-input" id="gender" name="gender" value="true">
+                <label class="form-check-label indigo-text" for="gender">Nam</label>
+                &nbsp &nbsp &nbsp
+                <input ng-model="studentR.gender" type="radio" class="form-check-input" id="gender2" name="gender" value="false">
+                <label class="form-check-label indigo-text" for="gender2">Nữ</label>
+            </div>
+        </span>
+        <span>
+          
+               
+         
+        </span>
+       
+
+        <div class="md-form md-outline">
+            <i class="far fa-envelope prefix indigo-text"></i><label class="bg-white indigo-text rounded px-2 ml-5" for="birthday"><strong>Ngày sinh(yyyy-mm-dd)</strong> </label> 
+            <input name="birthday" ng-model="studentR.birthday" type="text" id="birthday" class="form-control border-indigo" pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}" required>
+            <small ng-show="frmRegister.birthday.$error.required" class="form-text text-danger">Vui lòng nhập ngày sinh</small>
+            
+            <small ng-show="frmRegister.birthday.$error.pattern" class="form-text text-danger">Không đúng định dạng ngày sinh</small>
+        </div>
+
+        <div class="md-form md-outline">
+            <i class="fas fa-money-bill prefix indigo-text"></i> <label class="bg-white indigo-text rounded px-2 ml-5" for="schoolfee"><strong>Học phí</strong> </label>
+            <input name="schoolfee" ng-model="studentR.schoolfee" type="number" id="schoolfee" class="form-control border-indigo" required min="2000000">
+            
+            <small ng-show="frmRegister.schoolfee.$error.required" id="schoolfee" class="form-text text-danger">Vui lòng nhập học phí</small>
+            <small ng-show="frmRegister.schoolfee.$error.min" id="schoolfee" class="form-text text-danger">Học phí phải hơn 2 triệu</small>
+        </div>
+        <div class="text-center mt-4" style="margin-top: 10px;">
+            <button type="button" ng-disabled="frmRegister.$invalid" ng-click="dangKi()" class="btn btn-primary animationTop delay-04" style="background-color: #DF3F75; color: white; border: none; width: 170px; height: 35px; border-radius: 20px; font-size: 14px; margin-right: 10px;"> ĐĂNG KÍ</button>
+        
+        </div>
+    </form>
+    </body>
+<script>
+    AOS.init();
+</script>
+<script src='//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js'></script>
+<script type='text/javascript'>
+    //<![CDATA[    
+    $(function () {
+        var o = $(document).scrollTop(), n = $(".menu").outerHeight();
+        $(window).scroll(function () {
+            var s = $(document).scrollTop();
+            $(document).scrollTop() >= 50 ? $(".menu").css("position", "fixed") : $(".menu").css("position", "fixed"), s > n ? $(".menu").addClass("scroll").addClass("sticky") : $(".menu").removeClass("scroll"), s > o ? $(".menu").removeClass("no-scroll").removeClass("sticky") : $(".menu").addClass("no-scroll"), o = $(document).scrollTop()
+        })
+    });
+//]]>
+</script>
+
+<script language="javascript">
+    $(document).ready(function () {
+        $(window).scroll(function () {
+            if ($(this).scrollTop()) {
+                $('.menu').addClass('sticky');
+            } else {
+                $('.menu').removeClass('sticky');
+            }
+        });
+    });
+</script>
+
+<script>
+    var app = angular.module("myApp", ["ngRoute"]);
+    app.controller("trangThi", function ($scope, $http, $rootScope, $routeParams) {
+        $scope.mark = 0;
+        $rootScope.haha = 0;
+        $rootScope.stt = 0;
+        $rootScope.stt2 = 0;
+        $rootScope.cauHoi = {};
+        $rootScope.dsCauHoi = [];
+        $rootScope.dapAn = $rootScope.dsCauHoi;
+        $rootScope.m = 45;
+        $rootScope.s = 59;
+        $rootScope.timeout = null;
+        //tải dữ liệu
+        $http.get("db/Quizs/" + $routeParams.id + ".js").then(function (response) {
+            $rootScope.dsCauHoi = response.data;
+            $rootScope.cauHoi = angular.copy($rootScope.dsCauHoi[$rootScope.stt]);
+
+        }, function (response) {
+            alert("Lỗi");
+        });
+        //kết thúc sớm
+        $rootScope.ketThuc = function () {
+            clearTimeout($rootScope.timeout);
+            $rootScope.stt = 0;
+            document.getElementById("kq").innerText = "Số điểm bạn đã đạt được: " + $scope.mark;
+            $rootScope.check3 = !$rootScope.check3;
+            // $('#kq').append("<br><button class='btn btn-info'  ng-click='start2()'>Kiểm tra lại</button>");  
+
+        }
+        //bắt đầu thi
+        $rootScope.start = function () {
+            if ($rootScope.stt == 0) {
+                $rootScope.check = !$rootScope.check;
+
+            }
+            if ($rootScope.s == 0) {
+                $rootScope.m = $rootScope.m - 1;
+                $rootScope.s = 60;
+            }
+            if ($rootScope.m <= -1) {
+                $rootScope.ketThuc();
+                clearTimeout($rootScopetimeout);
+                return;
+            }
+            $rootScope.timeout = setTimeout(function () {
+
+                $rootScope.s = $rootScope.s - 1;
+                document.getElementById("m").innerText = $rootScope.m;
+                if ($rootScope.s < 10) {
+                    document.getElementById("s").innerText = "0" + $rootScope.s;
+                } else {
+                    document.getElementById("s").innerText = $rootScope.s;
+                }
+                $rootScope.start();
+            }, 1000);
+        }
+        //làm lại
+
+        $rootScope.start2 = function () {
+            location.reload();
+        }
+
+
+        $scope.next = function () {
+            $rootScope.stt = $rootScope.stt + 1;
+
+            if ($scope.stt >= $rootScope.dsCauHoi.length - 1) {
+                toast({
+                    title: "Chờ đã",
+                    message: "Bạn đang ở câu cuối cùng",
+                    type: "info",
+                    duration: 1000
+                });
+                $rootScope.ketThuc();
+                return;
+            }
+
+            $rootScope.cauHoi = angular.copy($rootScope.dsCauHoi[$scope.stt]);
+        }
+        $scope.pre = function () {
+            if ($scope.stt == 0) {
+                toast({
+                    title: "Chờ đã",
+                    message: "Bạn đang ở câu đầu tiên",
+                    type: "info",
+                    duration: 1000
+                });
+                return;
+            }
+            $scope.stt = $scope.stt - 1;
+            $rootScope.cauHoi = angular.copy($rootScope.dsCauHoi[$scope.stt]);
+        }
+        $scope.first = function () {
+            $scope.stt = 0;
+            $rootScope.cauHoi = angular.copy($rootScope.dsCauHoi[$scope.stt]);
+        }
+        $scope.last = function () {
+            $scope.stt = $rootScope.dsCauHoi.length - 1;
+            $rootScope.cauHoi = angular.copy($rootScope.dsCauHoi[$scope.stt]);
+        }
+        //xem đáp án
+        $scope.xemDA = function () {
+            $rootScope.check4 = !$rootScope.check4;
+        }
+        //trả lời câu hỏi
+        $scope.xemKQ = function () {
+            var ans = $('input[name=cauTL]:checked').val();
+            if ($scope.cauHoi.AnswerId == ans) {
+                toast({
+                    title: "Thông báo",
+                    message: "Bạn đã chọn đúng đáp án",
+                    type: "info",
+                    duration: 1000
+                });
+                $scope.mark = $scope.mark + $scope.cauHoi.Marks;
+
+            }
+            else {
+                toast({
+                    title: "Rất tiếc",
+                    message: "Bạn đã chọn sai đáp án",
+                    type: "warning",
+                    duration: 1000
+                })
+            }
+            document.getElementById($scope.cauHoi.AnswerId).checked = true;
+            $scope.next();
+        }
+
+    }); 
+</script>
+
+</html>
